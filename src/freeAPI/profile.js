@@ -3,7 +3,7 @@ import axios from "axios";
 export class UserProfileManagement {
   constructor() {
     this.method = "GET";
-    this.URL = "https://api.freeapi.app/api/v1/social-media/profile";
+    this.URL = "/api/v1/social-media/profile";
     this.headers = { accept: "application/json" };
   }
 
@@ -14,8 +14,11 @@ export class UserProfileManagement {
       headers: this.headers,
     };
     try {
+      axios.defaults.withCredentials = true;
       const { data } = await axios.request(options);
       console.log(data);
+      console.log(data.data.firstName);
+      console.log(data.success);
       return data;
     } catch (error) {
       console.error(error);

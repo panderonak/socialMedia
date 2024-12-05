@@ -3,7 +3,7 @@ import axios from "axios";
 export class PostsService {
   constructor() {
     this.method = "GET";
-    this.URL = "https://api.freeapi.app/api/v1/social-media/posts";
+    this.URL = "/api/v1/social-media/posts";
     this.headers = { accept: "application/json" };
   }
 

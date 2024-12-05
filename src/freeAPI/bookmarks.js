@@ -3,7 +3,7 @@ import axios from "axios";
 export class BookmarksService {
   constructor() {
     this.method = "GET";
-    this.URL = "https://api.freeapi.app/api/v1/social-media/bookmarks";
+    this.URL = "/api/v1/social-media/bookmarks";
     this.headers = { accept: "application/json" };
   }
 
