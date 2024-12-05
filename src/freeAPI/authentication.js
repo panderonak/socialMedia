@@ -3,7 +3,7 @@ import axios from "axios";
 export class AuthService {
   constructor() {
     this.method = "POST";
-    this.URL = "https://example.com/users";
+    this.URL = "/api/v1/users";
     this.headers = {
       accept: "application/json",
       "content-type": "application/json",
@@ -25,10 +25,12 @@ export class AuthService {
     try {
       const { data } = await axios.request(options);
       console.log(data);
-      if (data) {
+      if (data.success) {
+        console.log("Success");
         return this.loginUser({ username, password });
       } else {
-        return data;
+        console.log("Failed");
+        return data.success;
       }
     } catch (error) {
       console.error(error);
@@ -41,6 +43,23 @@ export class AuthService {
       url: `${this.URL}/login`,
       headers: this.headers,
       data: { password: password, username: username },
+    };
+    try {
+      const { data } = await axios.request(options);
+      console.log(data);
+      console.log(data.data.accessToken);
+      console.log(data.data.refreshToken);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async getLoggedInUser() {
+    const options = {
+      method: "GET",
+      url: `${this.URL}/current-user`,
+      headers: { accept: "application/json" },
     };
     try {
       const { data } = await axios.request(options);
@@ -60,7 +79,7 @@ export class AuthService {
     try {
       const { data } = await axios.request(options);
       console.log(data);
-      return data;
+      // return data;
     } catch (error) {
       console.error(error);
     }
