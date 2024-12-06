@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Footer, Header, SignUp } from "./components";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -6,7 +8,9 @@ function App() {
   return (
     <>
       <div>
-        <h1>Ronak Pandey</h1>
+        <Header />
+        <Outlet />
+        <Footer />
       </div>
     </>
   );
