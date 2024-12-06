@@ -14,12 +14,14 @@ export class UserProfileManagement {
       headers: this.headers,
     };
     try {
-      axios.defaults.withCredentials = true;
       const { data } = await axios.request(options);
       console.log(data);
       console.log(data.data.firstName);
       console.log(data.success);
-      return data;
+      if (data.success) {
+        const userData = data.data;
+        return userData;
+      }
     } catch (error) {
       console.error(error);
     }
