@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Container } from "../../components/index";
+import { Container, LogOutButton } from "../../components/index";
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -43,7 +43,11 @@ function Header() {
                 </li>
               ) : null
             )}
-            {authStatus && <li>Log Out Make</li>}
+            {authStatus && (
+              <li>
+                <LogOutButton />
+              </li>
+            )}
           </ul>
         </nav>
       </Container>
