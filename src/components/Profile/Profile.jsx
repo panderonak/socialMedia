@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { Container } from "../../components/index";
+import { Button, Container } from "../../components/index";
 import userProfileManagement from "../../freeAPI/profile";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const [userData, setUserData] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const profile = async () => {
@@ -25,6 +27,14 @@ export default function Profile() {
         <div className="text-center mb-7 font-semibold text-lg bg-teal-500">
           {userData?.account.username}
           {/* theronaksm_13 */}
+        </div>
+        <div className="bg-red-500 flex justify-end">
+          <Button
+            onClick={() => navigate("/user-detail")}
+            className="px-5 py-1"
+          >
+            Edit
+          </Button>
         </div>
         <div className="flex justify-between items-center w-full">
           <div className="w-2/5">
